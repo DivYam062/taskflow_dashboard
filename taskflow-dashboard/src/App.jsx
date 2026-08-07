@@ -1,10 +1,7 @@
-function App() {
+import AppRoutes from "./routes/AppRoutes";
 
-  return (
-    <>
-      <h1>TaskFlow Dashboard</h1>
-    </>
-  )
-}
+const App = () => {
+  return <AppRoutes />;
+};
 
-export default App
+export default App;
