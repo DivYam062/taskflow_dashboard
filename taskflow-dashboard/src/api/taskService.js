@@ -5,6 +5,11 @@ export const getTasksApi = async () => {
   return data;
 };
 
+export const getTaskByIdApi = async (id) => {
+  const { data } = await api.get(`/todos/${id}`);
+  return data;
+};
+
 export const createTaskApi = async (title) => {
   const { data } = await api.post("/todos", {
     title,
