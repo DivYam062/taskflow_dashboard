@@ -21,6 +21,8 @@ const Dashboard = () => {
     addTask,
     toggleTask,
     updatingTaskId,
+    deleteTask,
+    deletingTaskId,
   } = useTasks();
 
   const completedCount = tasks.filter(
@@ -59,10 +61,12 @@ const Dashboard = () => {
         {!loading &&
           !error &&
           tasks.length > 0 && (
-            <TaskList 
+            <TaskList
               tasks={tasks}
               onToggle={toggleTask}
-              updatingTaskId={updatingTaskId} 
+              updatingTaskId={updatingTaskId}
+              onDelete={deleteTask}
+              deletingTaskId={deletingTaskId}
             />
           )}
       </div>

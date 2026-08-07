@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createTask, getTasks, updateTask } from "../api/taskService";
+import { createTaskApi, getTasksApi, updateTaskApi, deleteTaskApi } from "../api/taskService";
 
 const useTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -9,13 +9,14 @@ const useTasks = () => {
   const [newTask, setNewTask] = useState("");
   const [adding, setAdding] = useState(false);
   const [updatingTaskId, setUpdatingTaskId] = useState(null);
+  const [deletingTaskId, setDeletingTaskId] = useState(null);
 
   const fetchTasks = async () => {
     try {
       setLoading(true);
       setError("");
 
-      const data = await getTasks();
+      const data = await getTasksApi();
 
       setTasks(data);
     } catch (err) {
@@ -34,7 +35,7 @@ const useTasks = () => {
     try {
       setAdding(true);
 
-      const task = await createTask(title);
+      const task = await createTaskApi(title);
 
       setTasks((prevTasks) => [
         {
@@ -61,7 +62,7 @@ const useTasks = () => {
     try {
       setUpdatingTaskId(id);
   
-      await updateTask(id, !currentTask.completed);
+      await updateTaskApi(id, !currentTask.completed);
   
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
@@ -81,6 +82,23 @@ const useTasks = () => {
     }
   };
 
+  const deleteTask = async (id) => {
+    try {
+      setDeletingTaskId(id);
+  
+      await deleteTaskApi(id);
+  
+      setTasks((prevTasks) =>
+        prevTasks.filter((task) => task.id !== id)
+      );
+    } catch (error) {
+      console.error(error);
+      alert("Unable to delete task.");
+    } finally {
+      setDeletingTaskId(null);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -90,15 +108,14 @@ const useTasks = () => {
     loading,
     error,
     retry: fetchTasks,
-
     newTask,
     setNewTask,
-
     adding,
     addTask,
-
     toggleTask,
-    updatingTaskId
+    updatingTaskId,
+    deleteTask,
+    deletingTaskId,
   };
 };
 

@@ -58,6 +58,11 @@
   background: #dc2626;
 }
 
+.task_delete:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
   .task_item {
     flex-direction: column;

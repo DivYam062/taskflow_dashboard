@@ -1,11 +1,11 @@
 import api from "./api";
 
-export const getTasks = async () => {
+export const getTasksApi = async () => {
   const { data } = await api.get("/todos?_limit=10");
   return data;
 };
 
-export const createTask = async (title) => {
+export const createTaskApi = async (title) => {
   const { data } = await api.post("/todos", {
     title,
     completed: false,
@@ -15,10 +15,14 @@ export const createTask = async (title) => {
   return data;
 };
 
-export const updateTask = async (id, completed) => {
+export const updateTaskApi = async (id, completed) => {
   const { data } = await api.patch(`/todos/${id}`, {
     completed,
   });
 
   return data;
+};
+
+export const deleteTaskApi = async (id) => {
+  await api.delete(`/todos/${id}`);
 };

@@ -5,6 +5,8 @@ const TaskList = ({
   tasks,
   onToggle,
   updatingTaskId,
+  onDelete,
+  deletingTaskId,
 }) => {
   return (
     <div className="task_list">
@@ -14,6 +16,8 @@ const TaskList = ({
           task={task}
           onToggle={onToggle}
           updatingTaskId={updatingTaskId}
+          onDelete={onDelete}
+          deletingTaskId={deletingTaskId}
         />
       ))}
     </div>

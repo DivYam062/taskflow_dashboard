@@ -4,6 +4,8 @@ const TaskItem = ({
   task,
   onToggle,
   updatingTaskId,
+  onDelete,
+  deletingTaskId,
 }) => {
   return (
     <div className="task_item">
@@ -25,8 +27,14 @@ const TaskItem = ({
         </p>
       </div>
 
-      <button className="task_delete">
-        Delete
+      <button
+        className="task_delete"
+        onClick={() => onDelete(task.id)}
+        disabled={deletingTaskId === task.id}
+      >
+        {deletingTaskId === task.id
+          ? "Deleting..."
+          : "Delete"}
       </button>
     </div>
   );
