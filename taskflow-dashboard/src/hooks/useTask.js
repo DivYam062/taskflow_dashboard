@@ -1,39 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
-import { getTaskByIdApi } from "../api/taskService";
+import useTaskContext from "../context/useTaskContext";
 
 const useTask = (id) => {
+  const { loading, error, fetchTasks, getTaskById } = useTaskContext();
 
-  const [task, setTask] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  const fetchTask = useCallback(async () => {
-    if (!id) return;
-
-    try {
-      setLoading(true);
-      setError("");
-
-      const data = await getTaskByIdApi(id);
-
-      setTask(data);
-    } catch (error) {
-      console.error("Failed to fetch task:", error);
-      setError("Failed to fetch task. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    fetchTask();
-  }, [fetchTask]);
+  const task = id ? getTaskById(id) : null;
+  const notFound = !loading && !error && id && !task;
 
   return {
     task,
     loading,
-    error,
-    retry: fetchTask,
+    error: notFound ? "Task not found." : error,
+    retry: fetchTasks,
   };
 };
 
