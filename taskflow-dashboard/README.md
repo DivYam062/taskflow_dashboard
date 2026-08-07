@@ -1,16 +1,172 @@
-# React + Vite
+# TaskFlow Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive Task Management Dashboard built with React, React Router DOM, Axios, and Plain CSS. The application supports CRUD operations, routing, API integration, and responsive UI design.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* View tasks from API
+* Add new tasks
+* Update task completion status
+* Delete tasks
+* View task details
+* Loading, error, and empty states
+* Responsive design for mobile, tablet, and desktop
+* Local state management for CRUD operations with mock API handling
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* React Router DOM
+* JavaScript (ES6+)
+* Plain CSS
+* Axios
+* JSONPlaceholder API
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Follow the steps below to run the project locally.
+
+### 1. Clone the Repository
+
+Clone the repository using Git:
+
+```bash
+git clone <your-github-repository-url>
+```
+
+Example:
+
+```bash
+git clone https://github.com/your-username/taskflow-dashboard.git
+```
+
+Navigate into the project folder:
+
+```bash
+cd taskflow-dashboard
+```
+
+---
+
+### 2. Install Dependencies
+
+Install all required packages:
+
+```bash
+npm install
+```
+
+---
+
+### 3. Start the Development Server
+
+Run the application:
+
+```bash
+npm start
+```
+
+OR
+
+```bash
+npm run dev
+```
+
+The application will start on:
+
+```bash
+http://localhost:3000
+```
+
+Open the above URL in your browser to view the application.
+
+---
+
+## API Information
+
+This project uses JSONPlaceholder as a mock API.
+
+Base URL:
+
+```
+https://jsonplaceholder.typicode.com
+```
+
+Endpoints used:
+
+```
+GET    /todos?_limit=10
+GET    /todos/{id}
+POST   /todos
+PATCH  /todos/{id}
+DELETE /todos/{id}
+```
+
+Note:
+JSONPlaceholder does not permanently store POST, PATCH, and DELETE changes. The application updates the local React state to reflect CRUD operations.
+
+## Project Structure
+
+```
+src
+│
+├── api
+│   └── taskService.js
+│
+├── components
+│   ├── Header
+│   ├── TaskItem
+│   ├── Loader
+│   └── Error
+│
+├── context
+│   ├── TaskContext.js
+│   ├── TaskProvider.jsx
+│   └── useTaskContext.js
+│
+├── hooks
+│   ├── useTasks.js
+│   └── useTask.js
+│
+├── pages
+│   ├── Dashboard
+│   └── TaskDetails
+│
+├── routes
+│   └── AppRoutes.jsx
+│
+├── App.jsx
+└── main.jsx
+```
+
+## Available Scripts
+
+### Start development server
+
+```bash
+npm start
+```
+
+OR
+
+```bash
+npm run dev
+```
+
+### Checks the codebase for linting issues and coding standard violations. 
+
+```bash
+npm run lint
+```
+
+### Build production version
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
