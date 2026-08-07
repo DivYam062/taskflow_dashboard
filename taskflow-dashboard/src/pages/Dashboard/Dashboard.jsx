@@ -15,6 +15,10 @@ const Dashboard = () => {
     loading,
     error,
     retry,
+    newTask,
+    setNewTask,
+    adding,
+    addTask,
   } = useTasks();
 
   const completedCount = tasks.filter(
@@ -30,7 +34,12 @@ const Dashboard = () => {
           totalCount={tasks.length}
         />
 
-        <TaskInput />
+        <TaskInput
+          value={newTask}
+          onChange={setNewTask}
+          onAdd={addTask}
+          loading={adding}
+        />
 
         {loading && <Loader />}
 

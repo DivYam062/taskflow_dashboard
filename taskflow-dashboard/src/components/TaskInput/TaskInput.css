@@ -32,6 +32,11 @@
   background: #1d4ed8;
 }
 
+.task_input_button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
 @media (max-width: 600px) {
   .task_input {
     flex-direction: column;
