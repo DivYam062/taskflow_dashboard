@@ -22,6 +22,7 @@ const TaskItem = ({
           type="checkbox"
           checked={task.completed}
           disabled={updatingTaskId === task.id}
+          onClick={(e) => e.stopPropagation()}
           onChange={() => onToggle(task.id)}
         />
 
