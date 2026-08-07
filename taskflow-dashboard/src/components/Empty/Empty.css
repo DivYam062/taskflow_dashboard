@@ -1,0 +1,13 @@
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty_title {
+  margin-bottom: 10px;
+}
+
+.empty_text {
+  font-size: 0.95rem;
+}

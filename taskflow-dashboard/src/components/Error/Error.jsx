@@ -1,7 +1,18 @@
-const Error = () => {
-  return (
-    <div>Error</div>
-  )
-}
+import "./Error.css";
 
-export default Error
+const Error = ({ message, onRetry }) => {
+  return (
+    <div className="error">
+      <p className="error_message">{message}</p>
+
+      <button
+        className="error_button"
+        onClick={onRetry}
+      >
+        Retry
+      </button>
+    </div>
+  );
+};
+
+export default Error;

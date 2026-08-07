@@ -1,0 +1,17 @@
+.error {
+  text-align: center;
+  padding: 40px;
+}
+
+.error_message {
+  color: crimson;
+  margin-bottom: 16px;
+}
+
+.error_button {
+  padding: 10px 20px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 6px;
+}

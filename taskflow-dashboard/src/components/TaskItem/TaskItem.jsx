@@ -1,7 +1,11 @@
+import "./TaskItem.css";
+
 const TaskItem = () => {
   return (
-    <div>TaskItem</div>
-  )
-}
+    <div className="task_item">
+      Task Item
+    </div>
+  );
+};
 
-export default TaskItem
+export default TaskItem;

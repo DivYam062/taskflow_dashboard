@@ -1,0 +1,26 @@
+.task_input {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.task_input_field {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.task_input_button {
+  padding: 12px 20px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .task_input {
+    flex-direction: column;
+  }
+}

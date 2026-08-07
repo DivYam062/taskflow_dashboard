@@ -1,7 +1,12 @@
+import "./Loader.css";
+
 const Loader = () => {
   return (
-    <div>Loader</div>
-  )
-}
+    <div className="loader">
+      <span className="loader_spinner"></span>
+      <p>Loading tasks...</p>
+    </div>
+  );
+};
 
-export default Loader
+export default Loader;
