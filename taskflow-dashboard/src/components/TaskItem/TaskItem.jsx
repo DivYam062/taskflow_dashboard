@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./TaskItem.css";
 
 const TaskItem = ({
@@ -7,9 +8,15 @@ const TaskItem = ({
   onDelete,
   deletingTaskId,
 }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/tasks/${task.id}`);
+  };
+
   return (
     <div className="task_item">
-      <div className="task_left">
+      <div className="task_left" onClick={handleNavigate}>
         <input
           className="task_checkbox"
           type="checkbox"
@@ -29,12 +36,10 @@ const TaskItem = ({
 
       <button
         className="task_delete"
-        onClick={() => onDelete(task.id)}
         disabled={deletingTaskId === task.id}
+        onClick={() => onDelete(task.id)}
       >
-        {deletingTaskId === task.id
-          ? "Deleting..."
-          : "Delete"}
+        {deletingTaskId === task.id ? "Deleting..." : "Delete"}
       </button>
     </div>
   );
