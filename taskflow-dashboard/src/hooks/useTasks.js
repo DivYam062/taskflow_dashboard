@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createTask, getTasks } from "../api/taskService";
+import { createTask, getTasks, updateTask } from "../api/taskService";
 
 const useTasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -8,6 +8,7 @@ const useTasks = () => {
 
   const [newTask, setNewTask] = useState("");
   const [adding, setAdding] = useState(false);
+  const [updatingTaskId, setUpdatingTaskId] = useState(null);
 
   const fetchTasks = async () => {
     try {
@@ -52,6 +53,34 @@ const useTasks = () => {
     }
   };
 
+  const toggleTask = async (id) => {
+    const currentTask = tasks.find((task) => task.id === id);
+  
+    if (!currentTask) return;
+  
+    try {
+      setUpdatingTaskId(id);
+  
+      await updateTask(id, !currentTask.completed);
+  
+      setTasks((prevTasks) =>
+        prevTasks.map((task) =>
+          task.id === id
+            ? {
+                ...task,
+                completed: !task.completed,
+              }
+            : task
+        )
+      );
+    } catch (error) {
+      console.error(error);
+      alert("Unable to update task.");
+    } finally {
+      setUpdatingTaskId(null);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -67,6 +96,9 @@ const useTasks = () => {
 
     adding,
     addTask,
+
+    toggleTask,
+    updatingTaskId
   };
 };
 

@@ -1,6 +1,10 @@
 import "./TaskItem.css";
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({
+  task,
+  onToggle,
+  updatingTaskId,
+}) => {
   return (
     <div className="task_item">
       <div className="task_left">
@@ -8,7 +12,8 @@ const TaskItem = ({ task }) => {
           className="task_checkbox"
           type="checkbox"
           checked={task.completed}
-          readOnly
+          disabled={updatingTaskId === task.id}
+          onChange={() => onToggle(task.id)}
         />
 
         <p

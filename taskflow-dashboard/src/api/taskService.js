@@ -14,3 +14,11 @@ export const createTask = async (title) => {
 
   return data;
 };
+
+export const updateTask = async (id, completed) => {
+  const { data } = await api.patch(`/todos/${id}`, {
+    completed,
+  });
+
+  return data;
+};
