@@ -1,22 +1,57 @@
+import Header from "../../components/Header/Header";
+import Loader from "../../components/Loader/Loader";
+import Error from "../../components/Error/Error";
+import Empty from "../../components/Empty/Empty";
+import TaskInput from "../../components/TaskInput/TaskInput";
+import TaskList from "../../components/TaskList/TaskList";
+
 import useTasks from "../../hooks/useTasks";
 
+import "./Dashboard.css";
+
 const Dashboard = () => {
-  const { tasks, loading, error } = useTasks();
+  const {
+    tasks,
+    loading,
+    error,
+    retry,
+  } = useTasks();
+
+  const completedCount = tasks.filter(
+    (task) => task.completed
+  ).length;
 
   return (
-    <main>
-      <h1>TaskFlow Dashboard</h1>
+    <div className="dashboard">
+      <div className="dashboard_container">
 
-      {loading && <p>Loading...</p>}
+        <Header
+          completedCount={completedCount}
+          totalCount={tasks.length}
+        />
 
-      {error && <p>{error}</p>}
+        <TaskInput />
 
-      {!loading &&
-        !error &&
-        tasks.map((task) => (
-          <p key={task.id}>{task.title}</p>
-        ))}
-    </main>
+        {loading && <Loader />}
+
+        {error && (
+          <Error
+            message={error}
+            onRetry={retry}
+          />
+        )}
+
+        {!loading &&
+          !error &&
+          tasks.length === 0 && <Empty />}
+
+        {!loading &&
+          !error &&
+          tasks.length > 0 && (
+            <TaskList tasks={tasks} />
+          )}
+      </div>
+    </div>
   );
 };
 
