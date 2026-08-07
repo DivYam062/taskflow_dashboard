@@ -1,13 +1,35 @@
 .empty {
+  padding: 48px 24px;
   text-align: center;
-  padding: 60px 20px;
-  color: #666;
+  border: 1px dashed #d1d5db;
+  border-radius: 16px;
+  background: #f9fafb;
+}
+
+.empty_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .empty_title {
   margin-bottom: 10px;
+  color: #1f2937;
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 .empty_text {
-  font-size: 0.95rem;
+  max-width: 360px;
+  margin: 0 auto;
+  color: #6b7280;
+  line-height: 1.6;
 }

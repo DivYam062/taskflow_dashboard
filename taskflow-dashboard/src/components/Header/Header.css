@@ -1,37 +1,134 @@
 .header {
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header_top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 28px;
-  gap: 16px;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.header_content {
+  flex: 1;
+}
+
+.header_eyebrow {
+  margin-bottom: 8px;
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .header_title {
+  margin-bottom: 8px;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #1f2937;
+  line-height: 1.2;
 }
 
-.header_counter {
-  background: #2563eb;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
+.header_subtitle {
+  max-width: 520px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.header_stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(88px, 1fr));
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.header_stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.header_stat span {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.header_stat strong {
+  color: #111827;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.header_stat_completed {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.header_stat_completed strong {
+  color: #15803d;
+}
+
+.header_stat_pending {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.header_stat_pending strong {
+  color: #b45309;
+}
+
+.header_progress_labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #6b7280;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
-@media (max-width: 600px) {
-  .header {
+.header_progress_track {
+  overflow: hidden;
+  height: 10px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.header_progress_bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .header_top {
     flex-direction: column;
-    text-align: center;
+  }
+
+  .header_stats {
+    width: 100%;
   }
 
   .header_title {
     font-size: 1.7rem;
   }
+}
 
-  .header_counter {
-    width: 100%;
-    text-align: center;
+@media (max-width: 480px) {
+  .header_stats {
+    grid-template-columns: 1fr;
   }
 }

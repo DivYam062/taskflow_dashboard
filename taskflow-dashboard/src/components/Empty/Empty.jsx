@@ -3,10 +3,14 @@ import "./Empty.css";
 const Empty = () => {
   return (
     <div className="empty">
-      <h2 className="empty_title">No Tasks Found</h2>
+      <div className="empty_icon" aria-hidden="true">
+        ✓
+      </div>
+
+      <h2 className="empty_title">No Tasks Yet</h2>
 
       <p className="empty_text">
-        Add your first task to get started.
+        Your task list is empty. Add your first task above to get started.
       </p>
     </div>
   );

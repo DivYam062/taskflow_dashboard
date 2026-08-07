@@ -1,25 +1,37 @@
 .dashboard {
   min-height: 100vh;
-  background: #f3f4f6;
   padding: 40px 20px;
+  background: #f3f4f6;
 }
 
 .dashboard_container {
-  max-width: 900px;
+  max-width: 920px;
   margin: 0 auto;
+  padding: 36px;
   background: #ffffff;
-  padding: 32px;
   border-radius: 18px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+.dashboard_section {
+  margin-bottom: 28px;
+}
+
+.dashboard_section_label {
+  display: block;
+  margin-bottom: 12px;
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .dashboard {
-    padding: 20px 16px;
+    padding: 24px 16px;
   }
 
   .dashboard_container {
-    padding: 20px;
-    border-radius: 12px;
+    padding: 24px 20px;
+    border-radius: 14px;
   }
 }
