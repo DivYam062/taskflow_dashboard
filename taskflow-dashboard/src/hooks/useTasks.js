@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 import useTaskContext from "../context/useTaskContext";
 
@@ -17,6 +17,7 @@ const useTasks = () => {
   const [adding, setAdding] = useState(false);
   const [updatingTaskId, setUpdatingTaskId] = useState(null);
   const [deletingTaskId, setDeletingTaskId] = useState(null);
+  const [search, setSearch] = useState("");
 
   const addTask = () => {
     const title = newTask.trim();
@@ -42,6 +43,18 @@ const useTasks = () => {
     setDeletingTaskId(null);
   };
 
+  // Memoize filtered tasks to avoid unnecessary recalculations
+  const searchResult = useMemo(() => {
+    if (!search.trim()) {
+      return tasks;
+    }
+    
+    const searchLower = search.toLowerCase();
+    return tasks.filter(task => 
+      task.title.toLowerCase().includes(searchLower)
+    );
+  }, [search, tasks]);
+
   return {
     tasks,
     loading,
@@ -55,6 +68,9 @@ const useTasks = () => {
     updatingTaskId,
     deleteTask,
     deletingTaskId,
+    search,
+    setSearch,
+    searchResult,
   };
 };
 
